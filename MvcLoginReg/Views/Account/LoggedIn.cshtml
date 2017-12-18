@@ -1,0 +1,21 @@
+﻿
+@model IEnumerable<MvcLoginReg.Models.UserAccount>
+@{
+    ViewBag.Title = "LoggedIn";
+}
+
+@if (Session["UserID"] != null)
+{
+    <h4> Hello @Session["FirstName"].ToString() @Session["LastName"].ToString() </h4>
+}
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(Model => Model.FirstName);
+            </th>
+        </tr>
+    </table>
+
+<div>
+
+</div>
