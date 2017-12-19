@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using MvcLoginReg.Repositories;
+using Microsoft.AspNet.Identity.EntityFramework;
+using MvcLoginReg.Framework.Repositories;
 
 namespace MvcLoginReg.Models
 {
-    public class UserAccount
-    {
+    public class UserAccount : IdentityUser, IEntity<string>
+     {
         [Key]
         public int UserID { get; set; }
         [Required(ErrorMessage = "Username is required")]
@@ -32,16 +34,8 @@ namespace MvcLoginReg.Models
         [Required(ErrorMessage = "Confirm Password is required")]
         public string ConfirmPassword { get; set; }
 
-        public List<UserAccount> GetUserAccount(UserAccount user)
-        {
-              MyDbContext db = new MyDbContext();
-
-            var usr = db.userAccount.ToList();
-
-            return usr;
+        
 
         }
-
-    }
 
 }
